@@ -1,7 +1,7 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+let projectData = {};
 
-// Require Express to run server and routes
+/* Dependencies */
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -30,19 +30,18 @@ function listening(){
 };
 
 //GET route that returns the projectData object
-app.get('/all', sendData)
+app.get('/all', getData)
 
-function sendData (request, response) {
+function getData (request, response) {
     response.send(projectData)
 }
 
 // POST route
-app.post('/addWeatherData', addData)
+app.post('/addWeatherData', sendData)
 
-function addData(request, response) {
+function sendData(request, response) {
     projectData.temperature = request.body.temperature;
     projectData.date = request.body.date;
     projectData.user_response = request.body.user_response;
-    response.end();
-    console.log(projectData)
+    response.send(projectData);
 }
