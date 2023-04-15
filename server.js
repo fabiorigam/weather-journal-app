@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.static('website'));
 
 // Setup Server
-const port = 3000;
+const port = 3001;
 const server = app.listen(port, listening);
 
 function listening(){
